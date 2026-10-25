@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:lms_testing_html_editors/editors/lms_html_quill_codec.dart';
+import 'package:lms_testing_html_editors/editors/html_quill_codec.dart';
 import 'package:lms_testing_html_editors/lab/lab_editor.dart';
 
-/// flutter_quill with its default toolbar, reading and writing HTML through the LMS codec
+/// flutter_quill with its default toolbar, reading and writing HTML through a custom codec
 /// ([HtmlQuillCodec]).
 class QuillLabEditor extends StatefulWidget {
   const QuillLabEditor({required this.initialHtml, required this.handle, super.key});
@@ -78,8 +78,8 @@ class _QuillLabEditorState extends State<QuillLabEditor> {
   }
 }
 
-/// Draws an embed that holds raw HTML (the LMS codec's `iframe`, `table` and `html`
-/// embeds) as a card, like the LMS editor does. Tables show their content.
+/// Draws an embed that holds raw HTML (the codec's `iframe`, `table` and `html`
+/// embeds) as a card. Tables show their content.
 class _RawHtmlEmbedBuilder extends EmbedBuilder {
   const _RawHtmlEmbedBuilder(this.key);
 

@@ -59,7 +59,7 @@ class _EditorLabPageState extends State<EditorLabPage> {
             style: const TextStyle(fontFamily: 'monospace', fontSize: 13),
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
-              hintText: 'Paste the HTML of a real lesson or classroom (for example from the database or the API).',
+              hintText: 'Paste your own HTML (for example a page from your database or API).',
             ),
           ),
         ),

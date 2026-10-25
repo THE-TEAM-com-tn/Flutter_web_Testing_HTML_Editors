@@ -8,7 +8,7 @@ enum EditorFamily {
   flutter(
     'Drawn by Flutter',
     'Pure Dart editors painted by Flutter (CanvasKit on web). Same code on web, Android, iOS and desktop. '
-        'They keep their own document model, so HTML goes through a converter. Only the LMS\'s own converter '
+        'They keep their own document model, so HTML goes through a converter. Only the custom codec used here '
         'keeps iframes and video; the others were removed after losing them.',
   ),
   summernote(
@@ -95,17 +95,17 @@ final List<EditorInfo> editorCatalog = [
   // Drawn by Flutter
   // ---------------------------------------------------------------------------
   EditorInfo(
-    id: 'quill-lms',
-    name: 'flutter_quill + LMS codec',
+    id: 'flutter-quill',
+    name: 'flutter_quill + HTML codec',
     family: EditorFamily.flutter,
     package: 'flutter_quill 11.6.0',
     released: '16 Sep 2026',
     license: 'MIT',
     platforms: 'Web · Android · iOS · desktop',
-    htmlModel: 'Converted by the LMS\'s own codec (snapshot of html_quill_codec.dart)',
+    htmlModel: 'Converted by a custom codec (lib/editors/html_quill_codec.dart)',
     popularity: '2.2k likes · 310k downloads/month',
     health: Health.active,
-    summary: 'What LMS_Frontend runs today. The baseline to beat. Iframes, tables and other HTML the editor has '
+    summary: 'The most used Flutter editor, with a custom HTML codec. Iframes, tables and other HTML the editor has '
         'no tool for become cards that are saved back unchanged.',
     pros: [
       'Keeps iframes, tables, video and unknown tags verbatim',
@@ -114,7 +114,7 @@ final List<EditorInfo> editorCatalog = [
     ],
     cons: [
       'A 729-line codec the team has to maintain',
-      'Tables and embeds are cards, not edited in place (the LMS adds dialogs, not included here)',
+      'Tables and embeds are cards, not edited in place (you would add your own dialogs)',
     ],
     link: 'https://pub.dev/packages/flutter_quill',
     builder: (context, html, handle) =>
@@ -135,7 +135,7 @@ final List<EditorInfo> editorCatalog = [
     htmlModel: 'Native HTML (Summernote edits the DOM)',
     popularity: '662 likes · 34k downloads/month',
     health: Health.stale,
-    summary: 'The editor the LMS used before flutter_quill. Existing lesson HTML was written with it.',
+    summary: 'The long-time go-to Summernote wrapper. A lot of existing HTML was written with it.',
     pros: ['Real HTML in and out', 'Big toolbar: tables, media, code view'],
     cons: [
       'No commit for 15 months, 243 open issues',
@@ -183,7 +183,7 @@ final List<EditorInfo> editorCatalog = [
     popularity: '16k GitHub stars',
     health: Health.active,
     summary: 'The most complete classic WYSIWYG: tables, media, source code, paste from Word, RTL.',
-    pros: ['Keeps LMS HTML (iframes, tables, styles) almost unchanged', 'Everything built in, very mature'],
+    pros: ['Keeps existing HTML (iframes, tables, styles) almost unchanged', 'Everything built in, very mature'],
     cons: [
       'GPL: a closed-source SaaS normally needs a commercial licence',
       'Tiny Cloud CDN needs an API key (this lab self-hosts from jsDelivr with license_key "gpl")',

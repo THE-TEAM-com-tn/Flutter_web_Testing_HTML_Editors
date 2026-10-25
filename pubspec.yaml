@@ -1,5 +1,5 @@
 name: lms_testing_html_editors
-description: "Playground to compare maintained rich-text / HTML editors on Flutter web before replacing the LMS lesson editor."
+description: "Playground to compare maintained rich-text / HTML editors on Flutter web."
 publish_to: 'none'
 version: 0.1.0+1
 

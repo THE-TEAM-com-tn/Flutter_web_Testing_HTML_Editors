@@ -41,16 +41,16 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Find a replacement for the LMS lesson editor', style: theme.textTheme.titleMedium),
+                      Text('Compare the maintained HTML editors for Flutter web', style: theme.textTheme.titleMedium),
                       const SizedBox(height: 8),
                       const Text(
-                        '1. Open an editor.  2. Pick a sample, or paste the HTML of a real lesson.  '
-                        '3. Edit it.  4. Press Export HTML: you get the HTML the editor would save, how the student '
-                        'app renders it, and the tags it lost on the way.',
+                        '1. Open an editor.  2. Pick a sample, or paste your own HTML.  '
+                        '3. Edit it.  4. Press Export HTML: you get the HTML the editor would save, how '
+                        'flutter_widget_from_html renders it, and the tags it lost on the way.',
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '${editorCatalog.length} editors: the ones that kept the LMS media (PDF, YouTube and Calendar '
+                        '${editorCatalog.length} editors: the ones that kept embedded media (PDF, YouTube and Calendar '
                         'iframes, <video>) through a round trip. Versions, dates, licences and download counts were '
                         'checked on pub.dev, npm and GitHub on 25 Oct 2026.',
                         style: theme.textTheme.bodySmall,

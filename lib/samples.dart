@@ -8,7 +8,7 @@ class HtmlSample {
   final String html;
 }
 
-/// The built-in test documents, modelled on what the LMS saves for lessons and classrooms.
+/// The built-in test documents: the kind of HTML a course, blog or CMS page saves.
 ///
 /// Images, videos and iframes point at public, CORS-friendly URLs so they load on `localhost`.
 abstract final class HtmlSamples {
@@ -52,12 +52,12 @@ abstract final class HtmlSamples {
   static const HtmlSample media = HtmlSample(
     id: 'media',
     title: 'Media & embeds',
-    description: 'Image, the LMS PDF iframe, a YouTube iframe, a Google Calendar iframe and a <video>.',
+    description: 'Image, a PDF iframe, a YouTube iframe, a Google Calendar iframe and a <video>.',
     html: '''
 <h2>Course material</h2>
 <p>An uploaded image:</p>
 <p><img src="https://picsum.photos/id/180/800/400" alt="Laptop on a desk" style="width: 100%; max-width: 640px;"></p>
-<p>The lesson PDF (the same iframe the LMS inserts after a PDF upload):</p>
+<p>The lesson PDF (an iframe, as inserted after a PDF upload):</p>
 <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf#toolbar=0" type="application/pdf" width="95%" height="500px" style="border: none;" oncontextmenu="return false;"></iframe>
 <p>A YouTube video:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fq4N0hgOWzU" title="Introducing Flutter" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

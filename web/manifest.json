@@ -1,11 +1,11 @@
 {
-    "name": "lms_testing_html_editors",
-    "short_name": "lms_testing_html_editors",
+    "name": "HTML editor lab",
+    "short_name": "HTML editor lab",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Compare the maintained HTML editors for Flutter web side by side.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

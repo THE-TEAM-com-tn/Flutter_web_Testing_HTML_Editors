@@ -41,7 +41,7 @@ class HtmlReport {
     return HtmlReport._(changes, wordsIn.length, kept);
   }
 
-  /// Attributes worth tracking: they carry the LMS's formatting and media.
+  /// Attributes worth tracking: they carry the formatting and media.
   static const List<String> trackedAttributes = ['style', 'class', 'dir', 'href', 'src', 'colspan', 'target'];
 
   /// Tags that mean the same thing, counted under one name, so that an editor writing

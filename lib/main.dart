@@ -9,7 +9,7 @@ import 'package:lms_testing_html_editors/samples.dart';
 void main() => runApp(const HtmlEditorLabApp());
 
 /// A playground to compare maintained rich-text / HTML editors that run on Flutter web,
-/// before picking one for LMS_Frontend.
+/// before picking one.
 ///
 /// Routes (also usable as web URLs, `#/editor/tinymce?sample=media`): `/`, and
 /// `/editor/<id>` with an optional `?sample=<id>` from [HtmlSamples.all].

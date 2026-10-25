@@ -14,7 +14,7 @@ class LabResult {
   final HtmlReport report;
 }
 
-/// The exported HTML in four tabs: rendered like the student app, source out, round trip, source in.
+/// The exported HTML in four tabs: rendered by flutter_widget_from_html, source out, round trip, source in.
 class ResultsPanel extends StatelessWidget {
   const ResultsPanel({required this.result, this.onClose, super.key});
 
@@ -78,7 +78,7 @@ class _RenderedTab extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       children: [
         Text(
-          'Rendered with flutter_widget_from_html, the viewer the LMS uses for students.',
+          'Rendered with flutter_widget_from_html, as a Flutter app would show it to readers.',
           style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
         ),
         const Divider(height: 24),

@@ -1,6 +1,4 @@
-// Snapshot of LMS_Frontend/lib/ui/widgets/rich_text_editor/html_quill_codec.dart (25 Oct 2026),
-// copied unchanged so the lab can compare the LMS's current HTML <-> Quill codec with the others.
-// Do not edit here; the LMS keeps the real one.
+// An HTML <-> Quill codec that keeps iframes, tables, video and any tag Quill has no tool for.
 //
 import 'dart:convert' show HtmlEscape, HtmlEscapeMode;
 
@@ -9,7 +7,7 @@ import 'package:flutter_quill/quill_delta.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as html_parser;
 
-/// Custom Quill embed types used by the lesson / classroom editor.
+/// Custom Quill embed types used by the codec.
 ///
 /// Each one stores the element's original HTML as its data, so what the editor
 /// cannot edit as rich text still goes back to the backend unchanged.
@@ -27,7 +25,7 @@ abstract final class HtmlEmbedType {
   static const List<String> all = [iframe, table, html];
 }
 
-/// Converts the HTML saved for lessons and classrooms to a Quill [Delta] and back.
+/// Converts saved HTML to a Quill [Delta] and back.
 ///
 /// Both directions are written here, for the HTML these editors produce (the old
 /// Summernote editor's output and this codec's own), so a document survives any number

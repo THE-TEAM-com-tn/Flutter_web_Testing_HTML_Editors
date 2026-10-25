@@ -4,7 +4,6 @@ import 'package:html_editor_plus/editor_plus.dart' as plus;
 import 'package:lms_testing_html_editors/lab/lab_editor.dart';
 
 /// html_editor_enhanced: Summernote in an iframe on web, in a WebView on mobile.
-/// The LMS used it before moving to flutter_quill.
 class HtmlEditorEnhancedLab extends StatefulWidget {
   const HtmlEditorEnhancedLab({required this.initialHtml, required this.handle, super.key});
 
