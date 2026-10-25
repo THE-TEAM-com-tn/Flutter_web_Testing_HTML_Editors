@@ -6,7 +6,7 @@ import 'package:lms_testing_html_editors/lab/widgets.dart';
 import 'package:url_launcher/link.dart';
 
 /// The lab's public repository, linked from the app bar and the intro card.
-const String labRepositoryUrl = 'https://github.com/THE-TEAM-com-tn/LMS_Testing_HTML_Editors';
+const String labRepositoryUrl = 'https://github.com/THE-TEAM-com-tn/Flutter_web_Testing_HTML_Editors';
 
 /// The list of editors, grouped by how they are built.
 class HomePage extends StatelessWidget {

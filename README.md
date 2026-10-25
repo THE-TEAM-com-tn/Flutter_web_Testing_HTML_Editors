@@ -1,4 +1,8 @@
-# LMS_Testing_HTML_Editors: HTML editor lab
+# Flutter_web_Testing_HTML_Editors: HTML editor lab
+
+**The updated and maintained HTML editors for Flutter web**, tested side by side. Every editor here had a
+release or a commit in 2026 (checked on 25 Oct 2026), except `html_editor_enhanced` (last release July 2025),
+kept as the baseline because it is the LMS's old editor.
 
 A Flutter playground to compare rich-text / HTML editors on **Flutter web** before replacing the lesson /
 classroom editor of `LMS_Frontend` (today: `flutter_quill` + the LMS's own HTML codec).
