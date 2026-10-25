@@ -3,6 +3,10 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:lms_testing_html_editors/catalog.dart';
 import 'package:lms_testing_html_editors/lab/widgets.dart';
+import 'package:url_launcher/link.dart';
+
+/// The lab's public repository, linked from the app bar and the intro card.
+const String labRepositoryUrl = 'https://github.com/THE-TEAM-com-tn/LMS_Testing_HTML_Editors';
 
 /// The list of editors, grouped by how they are built.
 class HomePage extends StatelessWidget {
@@ -12,7 +16,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('HTML editor lab')),
+      appBar: AppBar(
+        title: const Text('HTML editor lab'),
+        actions: [
+          _RepositoryLink(
+            builder: (followLink) => TextButton.icon(
+              icon: const Icon(Icons.code),
+              label: const Text('GitHub'),
+              onPressed: followLink,
+            ),
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final double cardWidth = math.min(420, constraints.maxWidth - 32);
@@ -39,6 +55,27 @@ class HomePage extends StatelessWidget {
                         'checked on pub.dev, npm and GitHub on 25 Oct 2026.',
                         style: theme.textTheme.bodySmall,
                       ),
+                      const SizedBox(height: 12),
+                      const Text('The code is public: clone it to try other editors or your own HTML.'),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 12,
+                        runSpacing: 8,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          _RepositoryLink(
+                            builder: (followLink) => FilledButton.tonalIcon(
+                              icon: const Icon(Icons.code),
+                              label: const Text('View on GitHub'),
+                              onPressed: followLink,
+                            ),
+                          ),
+                          SelectableText(
+                            labRepositoryUrl,
+                            style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.primary),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -64,6 +101,21 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Opens [labRepositoryUrl] in a new tab. On the web it is a real `<a>`, so middle-click and
+/// "Open link in new tab" work too.
+class _RepositoryLink extends StatelessWidget {
+  const _RepositoryLink({required this.builder});
+
+  final Widget Function(VoidCallback? followLink) builder;
+
+  @override
+  Widget build(BuildContext context) => Link(
+        uri: Uri.parse(labRepositoryUrl),
+        target: LinkTarget.blank,
+        builder: (context, followLink) => builder(followLink),
+      );
 }
 
 class _EditorCard extends StatelessWidget {
