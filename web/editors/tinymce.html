@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TinyMCE</title>
+  <link rel="stylesheet" href="lab.css">
+  <script src="bridge.js"></script>
+  <!-- Self-hosted GPL build from jsDelivr (license_key: 'gpl'); the Tiny Cloud CDN needs an API key. -->
+  <script src="https://cdn.jsdelivr.net/npm/tinymce@8.10.0/tinymce.min.js"
+          onerror="LabBridge.fail('Could not load TinyMCE from cdn.jsdelivr.net')"></script>
+</head>
+<body>
+  <textarea id="editor"></textarea>
+  <script>
+    tinymce.init({
+      selector: '#editor',
+      license_key: 'gpl',
+      height: '100%',
+      resize: false,
+      promotion: false,
+      branding: false,
+      onboarding: false,
+      menubar: 'edit view insert format table tools',
+      plugins: 'advlist autolink lists link image charmap searchreplace visualblocks code fullscreen media table wordcount directionality',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough forecolor backcolor | ' +
+        'alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | ltr rtl | ' +
+        'link image media table hr | removeformat code',
+      toolbar_mode: 'sliding',
+      setup: function (editor) {
+        editor.on('init', function () {
+          LabBridge.register({
+            getHtml: function () { return editor.getContent(); },
+            setHtml: function (html) { editor.setContent(html); },
+          });
+        });
+      },
+    }).catch(LabBridge.fail);
+  </script>
+</body>
+</html>

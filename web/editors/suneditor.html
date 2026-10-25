@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SunEditor</title>
+  <link rel="stylesheet" href="lab.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@3.4.0/dist/suneditor.min.css">
+  <script src="bridge.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/suneditor@3.4.0/dist/suneditor.min.js"
+          onerror="LabBridge.fail('Could not load SunEditor from cdn.jsdelivr.net')"></script>
+</head>
+<body>
+  <div id="editor"></div>
+  <script>
+    try {
+      // The plugins that work without a server (upload URLs, PDF export API, KaTeX…).
+      const names = [
+        'blockquote', 'codeBlock', 'list_bulleted', 'list_numbered', 'align', 'font', 'fontSize', 'fontColor',
+        'backgroundColor', 'list', 'table', 'blockStyle', 'hr', 'lineHeight', 'paragraphStyle', 'textStyle',
+        'link', 'image', 'video', 'audio', 'embed', 'anchor',
+      ];
+      const plugins = names.map(function (name) { return SUNEDITOR.plugins[name]; }).filter(Boolean);
+      let editor;
+      editor = SUNEDITOR.create(document.querySelector('#editor'), {
+        plugins: plugins,
+        width: '100%',
+        height: (window.innerHeight - 110) + 'px',
+        buttonList: [
+          ['undo', 'redo'],
+          ['blockStyle', 'font', 'fontSize'],
+          ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
+          ['fontColor', 'backgroundColor', 'removeFormat'],
+          ['align', 'list_numbered', 'list_bulleted', 'outdent', 'indent', 'lineHeight'],
+          ['blockquote', 'codeBlock', 'hr', 'table', 'link', 'image', 'video', 'embed'],
+          ['dir_ltr', 'dir_rtl'],
+          ['fullScreen', 'showBlocks', 'codeView'],
+        ],
+        events: {
+          onload: function () {
+            LabBridge.register({
+              getHtml: function () { return editor.$.html.get(); },
+              setHtml: function (html) { editor.$.html.set(html); },
+            });
+          },
+        },
+      });
+    } catch (error) {
+      LabBridge.fail(error);
+    }
+  </script>
+</body>
+</html>

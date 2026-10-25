@@ -1,0 +1,18 @@
+/* Base styles shared by the editor pages (each page runs in its own iframe). */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #ffffff;
+  color: #1f2328;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Arabic", sans-serif;
+}
+
+img,
+iframe,
+video {
+  max-width: 100%;
+}

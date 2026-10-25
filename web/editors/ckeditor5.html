@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKEditor 5</title>
+  <link rel="stylesheet" href="lab.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ckeditor5@49.0.0/dist/browser/ckeditor5.css">
+  <script src="bridge.js"></script>
+  <!-- Self-hosted GPL build from jsDelivr (licenseKey: 'GPL'); cdn.ckeditor.com needs a license key. -->
+  <script src="https://cdn.jsdelivr.net/npm/ckeditor5@49.0.0/dist/browser/ckeditor5.umd.js"
+          onerror="LabBridge.fail('Could not load CKEditor 5 from cdn.jsdelivr.net')"></script>
+  <style>
+    .ck.ck-editor__editable_inline { min-height: calc(100vh - 90px); }
+  </style>
+</head>
+<body>
+  <div id="editor"></div>
+  <script>
+    // Plugins this page asks for; any name the build does not export is skipped (and logged).
+    const wanted = [
+      'Essentials', 'Autoformat', 'Paragraph', 'Heading', 'Bold', 'Italic', 'Underline', 'Strikethrough',
+      'Subscript', 'Superscript', 'Code', 'RemoveFormat', 'FontFamily', 'FontSize', 'FontColor',
+      'FontBackgroundColor', 'Alignment', 'Link', 'AutoLink', 'List', 'Indent', 'IndentBlock', 'BlockQuote',
+      'CodeBlock', 'HorizontalLine', 'Image', 'ImageToolbar', 'ImageCaption', 'ImageStyle', 'ImageResize',
+      'ImageInsertViaUrl', 'AutoImage', 'MediaEmbed', 'Table', 'TableToolbar', 'TableProperties',
+      'TableCellProperties', 'PasteFromOffice', 'SourceEditing', 'GeneralHtmlSupport', 'HtmlEmbed',
+    ];
+    const plugins = wanted.map(function (name) {
+      if (!CKEDITOR[name]) console.warn('CKEditor build has no plugin ' + name);
+      return CKEDITOR[name];
+    }).filter(Boolean);
+
+    CKEDITOR.ClassicEditor.create(document.querySelector('#editor'), {
+      licenseKey: 'GPL',
+      plugins: plugins,
+      toolbar: {
+        items: [
+          'undo', 'redo', '|', 'heading', '|', 'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', '|',
+          'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'code', 'removeFormat', '|',
+          'link', 'insertImage', 'mediaEmbed', 'insertTable', 'blockQuote', 'codeBlock', 'htmlEmbed', 'horizontalLine', '|',
+          'alignment', 'bulletedList', 'numberedList', 'outdent', 'indent', '|', 'sourceEditing',
+        ],
+        shouldNotGroupWhenFull: false,
+      },
+      image: { toolbar: ['imageStyle:inline', 'imageStyle:block', 'imageStyle:side', '|', 'toggleImageCaption', 'imageTextAlternative'] },
+      table: { contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties'] },
+      mediaEmbed: { previewsInData: true },
+      // Keep any element, attribute, class and style the editor has no feature for (iframes, inline styles…).
+      htmlSupport: { allow: [{ name: /.*/, attributes: true, classes: true, styles: true }] },
+    }).then(function (editor) {
+      LabBridge.register({
+        getHtml: function () { return editor.getData(); },
+        setHtml: function (html) { editor.setData(html); },
+      });
+    }).catch(LabBridge.fail);
+  </script>
+</body>
+</html>

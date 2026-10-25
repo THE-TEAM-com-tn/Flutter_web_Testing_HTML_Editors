@@ -1,0 +1,28 @@
+name: lms_testing_html_editors
+description: "Playground to compare maintained rich-text / HTML editors on Flutter web before replacing the LMS lesson editor."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_quill: ^11.6.0
+  flutter_quill_extensions: ^11.0.0
+  flutter_widget_from_html: ^0.17.4
+  html: ^0.15.7
+  html_editor_enhanced: ^2.7.1
+  html_editor_plus: ^0.0.7
+  web: ^1.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
